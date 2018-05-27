@@ -35,11 +35,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.8.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.8.2\lib\net45\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,13 +65,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Interfaces\ITweetRepository.cs" />
-    <Compile Include="Application\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
+    <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommand.cs" />
+    <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
+    <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
+    <Compile Include="Application\Users\Commands\CreateUser\ICreateUserCommand.cs" />
+    <Compile Include="ContainerConfig.cs" />
     <Compile Include="Domain\Tweets\Tweet.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Domain\Users\UserTests.cs" />
     <Compile Include="Persistance\TweetRepository.cs" />
-    <Compile Include="Persistance\UnitOfWork.cs" />
     <Compile Include="Persistance\UserRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,7 +86,6 @@
   <ItemGroup>
     <Folder Include="Application\Tweets\Commands\" />
     <Folder Include="Application\Tweets\Queries\" />
-    <Folder Include="Application\Users\Commands\" />
     <Folder Include="Application\Users\Quries\" />
   </ItemGroup>
   <ItemGroup>

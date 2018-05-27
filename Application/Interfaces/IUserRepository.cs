@@ -5,5 +5,6 @@ namespace Twitter.Application.Interfaces
     public interface IUserRepository
     {
         void Add(User user);
+        User Get(string name);
     }
 }
