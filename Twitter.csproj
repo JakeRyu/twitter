@@ -64,18 +64,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Commands\FollowCommand.cs" />
     <Compile Include="Application\Interfaces\ITweetRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
+    <Compile Include="Application\Commands\ReadCommand.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommand.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\ICreateUserCommand.cs" />
+    <Compile Include="Application\CommandLineReader.cs" />
+    <Compile Include="Application\Commands\WallCommand.cs" />
     <Compile Include="ContainerConfig.cs" />
     <Compile Include="Domain\Tweets\Tweet.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Domain\Users\UserTests.cs" />
+    <Compile Include="Application\Interfaces\ICommand.cs" />
     <Compile Include="Persistance\TweetRepository.cs" />
     <Compile Include="Persistance\UserRepository.cs" />
+    <Compile Include="Application\Commands\PostCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
