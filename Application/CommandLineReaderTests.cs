@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Twitter.Application.Commands;
 
 namespace Twitter.Application
@@ -7,43 +8,15 @@ namespace Twitter.Application
     class CommandLineReaderTests
     {
         [Test]
-        public void Parse_PostingActionEntered_ReturnPostCommand()
+        [TestCase("Alicie -> I love the weather today", typeof(PostCommand))]
+        [TestCase("Alicie", typeof(ReadCommand))]
+        [TestCase("Charlie follows Alice", typeof(FollowCommand))]
+        [TestCase("Charlie wall", typeof(WallCommand))]
+        public void Parse_BasedOnInput_ReturnsACommandAccordingly(string input, Type commandType)
         {
-            var input = "Alicie -> I love the weather today";
-
             var command = CommandLineReader.Parse(input);
 
-            Assert.That(command, Is.TypeOf<PostCommand>());
-        }
-
-        [Test]
-        public void Parse_ReadingActionEntered_ReturnReadCommand()
-        {
-            var input = "Alice";
-
-            var command = CommandLineReader.Parse(input);
-
-            Assert.That(command, Is.TypeOf<ReadCommand>());
-        }
-
-        [Test]
-        public void Parse_FollowingActionEntered_ReturnFollowCommand()
-        {
-            var input = "Charlie follows Alice";
-
-            var command = CommandLineReader.Parse(input);
-
-            Assert.That(command, Is.TypeOf<FollowCommand>());
-        }
-
-        [Test]
-        public void Parse_WallActionEntered_ReturnWallCommand()
-        {
-            var input = "Charlie wall";
-
-            var command = CommandLineReader.Parse(input);
-
-            Assert.That(command, Is.TypeOf<WallCommand>());
+            Assert.That(command, Is.TypeOf(commandType));
         }
     }
 }
