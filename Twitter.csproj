@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\CommandLineReaderTests.cs" />
     <Compile Include="Application\Commands\FollowCommand.cs" />
     <Compile Include="Application\Interfaces\ITweetRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />

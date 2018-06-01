@@ -10,11 +10,12 @@ namespace Twitter.Application
     {
         public static ICommand Parse(string input)
         {
+            const int MIN_LENGTH_FOR_ACTION = 1;
             string[] splitted = input.Split(' ');
-            if(splitted.Length < 1) throw new ArgumentNullException();
+            if(splitted.Length < MIN_LENGTH_FOR_ACTION) throw new ArgumentNullException();
 
             var username = splitted[0];
-            var action = splitted[1] ?? "read";
+            var action = splitted.Length == MIN_LENGTH_FOR_ACTION ? "read" : splitted[1];
 
             ICommand parsedCommand = null;
             switch (action)
@@ -37,7 +38,6 @@ namespace Twitter.Application
                     throw new Exception("Invalid action entered");
             }
             
-            // write tests to see if a correct type is returned based on parsing
             return parsedCommand;
         }
     }
