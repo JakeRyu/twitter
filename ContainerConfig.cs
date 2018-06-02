@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using Twitter.Application.Commands;
 using Twitter.Application.Interfaces;
 using Twitter.Application.Users.Commands.CreateUser;
+using Twitter.Application.Users.Quries.GetUserDetail;
 using Twitter.Persistance;
 
 namespace Twitter
@@ -12,6 +14,8 @@ namespace Twitter
             var builder = new ContainerBuilder();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<CreateUserCommand>().As<ICreateUserCommand>();
+            builder.RegisterType<GetUserDetailQuery>().As<IGetUserDetailQuery>();
+            builder.RegisterType<PostCommand>().PropertiesAutowired();
             return builder.Build();
         }
     }

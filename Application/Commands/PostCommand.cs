@@ -1,5 +1,7 @@
 ﻿using System;
 using Twitter.Application.Interfaces;
+using Twitter.Application.Users.Commands.CreateUser;
+using Twitter.Application.Users.Quries.GetUserDetail;
 
 namespace Twitter.Application.Commands
 {
@@ -7,6 +9,9 @@ namespace Twitter.Application.Commands
     {
         private readonly string _username;
         private readonly string _message;
+        public IGetUserDetailQuery GetUserDetailQuery { get; set; }
+        public ICreateUserCommand CreateUserCommand { get; set; }
+
 
         public PostCommand(string username, string message)
         {
@@ -16,7 +21,12 @@ namespace Twitter.Application.Commands
 
         public void Execute()
         {
-            Console.WriteLine($"{_username} said {_message}");
+            var user = GetUserDetailQuery.Execute(_username);
+
+            if (user == null)
+                CreateUserCommand.Execute(new CreateUserModel {Name = _username});
+
+            // save message
         }
     }
 }

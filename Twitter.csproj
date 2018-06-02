@@ -64,7 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\CommandLineReaderTests.cs" />
     <Compile Include="Application\Commands\FollowCommand.cs" />
     <Compile Include="Application\Interfaces\ITweetRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
@@ -73,8 +72,11 @@
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\ICreateUserCommand.cs" />
-    <Compile Include="Application\CommandLineReader.cs" />
     <Compile Include="Application\Commands\WallCommand.cs" />
+    <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQuery.cs" />
+    <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQueryTests.cs" />
+    <Compile Include="Application\Users\Quries\GetUserDetail\IGetUserDetailQuery.cs" />
+    <Compile Include="Application\Users\Quries\GetUserDetail\UserDetailModel.cs" />
     <Compile Include="ContainerConfig.cs" />
     <Compile Include="Domain\Tweets\Tweet.cs" />
     <Compile Include="Domain\Users\User.cs" />
@@ -93,7 +95,6 @@
   <ItemGroup>
     <Folder Include="Application\Tweets\Commands\" />
     <Folder Include="Application\Tweets\Queries\" />
-    <Folder Include="Application\Users\Quries\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

@@ -11,14 +11,14 @@ namespace Twitter.Application.Users.Commands.CreateUser
     public class CreateUserCommandTests
     {
         [Test]
-        public void CreateUserCommand_WhenExecuted_AUserIsCreated()
+        public void CreateUserCommand_WhenExecuted_CallAddMethodInUserRepository()
         {
             var model = new CreateUserModel { Name = "a" };
             var userRepo = new Mock<IUserRepository>();
             userRepo.Setup(u => u.Add(It.IsAny<User>()));
-            var sut = new CreateUserCommand(userRepo.Object);
+            var command = new CreateUserCommand(userRepo.Object);
 
-            sut.Execute(model);
+            command.Execute(model);
 
             userRepo.Verify(u => u.Add(It.IsAny<User>()));
         }
