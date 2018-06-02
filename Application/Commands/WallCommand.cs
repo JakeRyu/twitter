@@ -2,16 +2,14 @@ using Twitter.Application.Interfaces;
 
 namespace Twitter.Application.Commands
 {
-    public class WallCommand : ICommand
+    public class WallCommand : Command
     {
-        private readonly string _username;
 
-        public WallCommand(string username)
+        public WallCommand(string username) : base(username)
         {
-            _username = username;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             throw new System.NotImplementedException();
         }

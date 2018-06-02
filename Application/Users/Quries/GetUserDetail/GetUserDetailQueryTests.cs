@@ -4,7 +4,7 @@ using Twitter.Application.Interfaces;
 
 namespace Twitter.Application.Users.Quries.GetUserDetail
 {
-    [TestFixture()]
+    [TestFixture]
     class GetUserDetailQueryTests
     {
         [Test]

@@ -7,7 +7,7 @@ using Twitter.Persistance;
 
 namespace Twitter.Application.Users.Commands.CreateUser
 {
-    [TestFixture()]
+    [TestFixture]
     public class CreateUserCommandTests
     {
         [Test]

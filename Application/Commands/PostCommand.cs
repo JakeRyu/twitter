@@ -5,21 +5,19 @@ using Twitter.Application.Users.Quries.GetUserDetail;
 
 namespace Twitter.Application.Commands
 {
-    public class PostCommand : ICommand
+    public class PostCommand : Command
     {
-        private readonly string _username;
         private readonly string _message;
         public IGetUserDetailQuery GetUserDetailQuery { get; set; }
         public ICreateUserCommand CreateUserCommand { get; set; }
 
 
-        public PostCommand(string username, string message)
+        public PostCommand(string username, string message) : base(username)
         {
-            _username = username;
             _message = message;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             var user = GetUserDetailQuery.Execute(_username);
 

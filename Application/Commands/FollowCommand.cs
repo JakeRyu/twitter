@@ -2,18 +2,16 @@ using Twitter.Application.Interfaces;
 
 namespace Twitter.Application.Commands
 {
-    public class FollowCommand : ICommand
+    public class FollowCommand : Command
     {
-        private readonly string _username;
         private readonly string _userToFollow;
 
-        public FollowCommand(string username, string userToFollow)
+        public FollowCommand(string username, string userToFollow) : base(username)
         {
-            _username = username;
             _userToFollow = userToFollow;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             throw new System.NotImplementedException();
         }

@@ -2,16 +2,13 @@ using Twitter.Application.Interfaces;
 
 namespace Twitter.Application.Commands
 {
-    public class ReadCommand : ICommand
+    public class ReadCommand : Command
     {
-        private readonly string _username;
-
-        public ReadCommand(string username)
+        public ReadCommand(string username) : base(username)
         {
-            _username = username;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             throw new System.NotImplementedException();
         }

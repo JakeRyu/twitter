@@ -9,11 +9,11 @@ namespace Twitter
 {
     public class Program
     {
-        private static IContainer Container { get; set; }
+        private static IContainer _container;
 
         static void Main(string[] args)
         {
-            Container = ContainerConfig.Configure();
+            _container = ContainerConfig.Configure();
             Console.WriteLine("Enter a command. (Hit ENTER to exit)");
 
             while (true)
@@ -21,14 +21,11 @@ namespace Twitter
                 var input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input)) break;
 
-                var result = ParseCommand(input);
-
-                // add exception handling
-                result.Execute();
+                ParseCommand(input).Execute();
             }
         }
 
-        private static ICommand ParseCommand(string input)
+        internal static ICommand ParseCommand(string input)
         {
             const int MIN_LENGTH_FOR_ACTION = 1;
             string[] splitted = input.Split(' ');
@@ -42,7 +39,7 @@ namespace Twitter
             {
                 case "->":
                     var message = string.Join(" ", splitted.Skip(2));
-                    parsedCommand = Container.Resolve<PostCommand>(
+                    parsedCommand = _container.Resolve<PostCommand>(
                         new NamedParameter("username", username),
                         new NamedParameter("message", message));
                     break;
