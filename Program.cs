@@ -4,6 +4,7 @@ using Autofac;
 using Twitter.Application.Interfaces;
 using Twitter.Application.Posts.Commands.CreatePost;
 using Twitter.Application.Posts.Queries.GetPostListByUser;
+using Twitter.Application.Users.Commands.Follow;
 
 namespace Twitter
 {
@@ -42,7 +43,8 @@ namespace Twitter
                     _container.Resolve<ICreatePostCommand>().Execute(args);
                     break;
                 case "follows":
-                    var userToFollow = splitted[2];
+                    var usernameToFollow = splitted[2];
+                    _container.Resolve<IFollowUserCommand>().Execute(username, usernameToFollow);
                     break;
                 case "wall":
                     break;

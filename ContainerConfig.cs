@@ -3,6 +3,7 @@ using Twitter.Application.Interfaces;
 using Twitter.Application.Posts.Commands.CreatePost;
 using Twitter.Application.Posts.Queries.GetPostListByUser;
 using Twitter.Application.Users.Commands.CreateUser;
+using Twitter.Application.Users.Commands.Follow;
 using Twitter.Application.Users.Quries.GetUserDetail;
 using Twitter.Common.Dates;
 using Twitter.Persistance;
@@ -21,6 +22,7 @@ namespace Twitter
             builder.RegisterType<GetUserDetailQuery>().As<IGetUserDetailQuery>();
             builder.RegisterType<CreatePostCommand>().As<ICreatePostCommand>();
             builder.RegisterType<GetPostListByUserQuery>().As<IGetPostListByUserQuery>();
+            builder.RegisterType<FollowUserCommand>().As<IFollowUserCommand>();
             return builder.Build();
         }
     }

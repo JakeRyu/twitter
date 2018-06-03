@@ -23,6 +23,7 @@ namespace Twitter.Application.Posts.Queries.GetPostListByUser
         public IEnumerable<PostListItemModel> Execute(string username)
         {
             return _postRepository.ListByUser(username)
+                .OrderByDescending(p => p.At)
                 .Select(p => new PostListItemModel
                 {
                     Message = p.Message,

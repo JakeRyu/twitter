@@ -93,6 +93,9 @@
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\ICreateUserCommand.cs" />
+    <Compile Include="Application\Users\Commands\Follow\FollowUserCommand.cs" />
+    <Compile Include="Application\Users\Commands\Follow\FollowUserCommandTests.cs" />
+    <Compile Include="Application\Users\Commands\Follow\IFollowUserCommand.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQuery.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQueryTests.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\IGetUserDetailQuery.cs" />
@@ -113,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\Posts\Queries\Wall\" />
-    <Folder Include="Application\Users\Commands\Follow\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
