@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Twitter.Application.Interfaces;
+using Twitter.Common.Dates;
 using Twitter.Domain.Posts;
 using Twitter.Domain.Users;
 
@@ -9,11 +10,14 @@ namespace Twitter.Application.Posts.Queries.GetPostListByUser
     public class GetPostListByUserQuery : IGetPostListByUserQuery
     {
         private readonly IPostRepository _postRepository;
+        private readonly IDateService _dateService;
 
         public GetPostListByUserQuery(
-            IPostRepository postRepository)
+            IPostRepository postRepository,
+            IDateService dateService)
         {
             _postRepository = postRepository;
+            _dateService = dateService;
         }
 
         public IEnumerable<PostListItemModel> Execute(string username)
@@ -22,7 +26,7 @@ namespace Twitter.Application.Posts.Queries.GetPostListByUser
                 .Select(p => new PostListItemModel
                 {
                     Message = p.Message,
-                    WhenPosted = p.At.ToString("f")
+                    WhenPosted = _dateService.GetWhenPosted(p.At)
                 });
         }
     }

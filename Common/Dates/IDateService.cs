@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace Twitter.Common.Dates
 {
@@ -17,9 +18,23 @@ namespace Twitter.Common.Dates
 
         public string GetWhenPosted(DateTimeOffset datetime)
         {
-            TimeSpan difference = DateTimeOffset.Now - datetime;
+            string result = string.Empty;
+            var difference = DateTimeOffset.Now - datetime;
 
-            return $"{difference.Minutes:D2}";
+            switch (difference.Minutes)
+            {
+                case 0:
+                    result = "just now";
+                    break;
+                case 1:
+                    result = "1 minute ago";
+                    break;
+                default:
+                    result = $"{difference.Minutes:D} minutes ago";
+                    break;
+            }
+
+            return result;
         }
     }
 }
