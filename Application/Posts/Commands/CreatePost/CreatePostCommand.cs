@@ -1,4 +1,5 @@
 ﻿using Twitter.Application.Interfaces;
+using Twitter.Common.Dates;
 using Twitter.Domain.Posts;
 using Twitter.Domain.Users;
 
@@ -8,13 +9,16 @@ namespace Twitter.Application.Posts.Commands.CreatePost
     {
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IDateService _dateService;
 
         public CreatePostCommand(
             IPostRepository postRepository,
-            IUserRepository userRepository)
+            IUserRepository userRepository,
+            IDateService dateService)
         {
             _postRepository = postRepository;
             _userRepository = userRepository;
+            _dateService = dateService;
         }
 
         public void Execute(dynamic model)
@@ -29,7 +33,8 @@ namespace Twitter.Application.Posts.Commands.CreatePost
             var post = new Post
             {
                 User = user,
-                Message = model.Message
+                Message = model.Message,
+                At = _dateService.GetDate()
             };
 
             _postRepository.Add(post);

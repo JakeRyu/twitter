@@ -1,6 +1,8 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using Twitter.Application.Interfaces;
+using Twitter.Common.Dates;
 using Twitter.Domain.Posts;
 using Twitter.Domain.Users;
 
@@ -11,6 +13,7 @@ namespace Twitter.Application.Posts.Commands.CreatePost
     {
         private Mock<IPostRepository> _postRepository;
         private Mock<IUserRepository> _userRepository;
+        private Mock<IDateService> _dateService;
         private CreatePostCommand _command;
         private string _username = "a";
         private dynamic _args;
@@ -20,7 +23,8 @@ namespace Twitter.Application.Posts.Commands.CreatePost
         {
             _userRepository = new Mock<IUserRepository>();
             _postRepository = new Mock<IPostRepository>();
-            _command = new CreatePostCommand(_postRepository.Object, _userRepository.Object);
+            _dateService = new Mock<IDateService>();
+            _command = new CreatePostCommand(_postRepository.Object, _userRepository.Object, _dateService.Object);
 
             _postRepository.Setup(p => p.Add(It.IsAny<Post>()));
             _userRepository.Setup(u => u.Add(It.IsAny<User>()));
