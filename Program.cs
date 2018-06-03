@@ -4,7 +4,7 @@ using Autofac;
 using Twitter.Application;
 using Twitter.Application.Commands;
 using Twitter.Application.Interfaces;
-using Twitter.Application.Tweets.Commands.Post;
+using Twitter.Application.Posts.Commands.Post;
 
 namespace Twitter
 {

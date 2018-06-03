@@ -1,12 +1,12 @@
 ﻿using System;
 using Twitter.Application.Interfaces;
-using Twitter.Domain.Tweets;
+using Twitter.Domain.Posts;
 
 namespace Twitter.Persistance
 {
-    public class TweetRepository : ITweetRepository
+    public class PostRepository : IPostRepository
     {
-        public void Add(Tweet tweet)
+        public void Add(Post post)
         {
             throw new NotImplementedException();
         }

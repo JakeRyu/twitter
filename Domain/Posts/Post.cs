@@ -1,11 +1,11 @@
 ﻿using System;
 using Twitter.Domain.Users;
 
-namespace Twitter.Domain.Tweets
+namespace Twitter.Domain.Posts
 {
-    public class Tweet
+    public class Post
     {
-        public Tweet()
+        public Post()
         {
             At = DateTimeOffset.Now;
         }

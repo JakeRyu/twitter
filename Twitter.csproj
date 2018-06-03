@@ -82,13 +82,13 @@
   <ItemGroup>
     <Compile Include="Application\Commands\Command.cs" />
     <Compile Include="Application\Commands\FollowCommand.cs" />
-    <Compile Include="Application\Interfaces\ITweetRepository.cs" />
+    <Compile Include="Application\Interfaces\IPostRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
     <Compile Include="Application\Commands\ReadCommand.cs" />
-    <Compile Include="Application\Tweets\Commands\CreateTweetCommand.cs" />
-    <Compile Include="Application\Tweets\Commands\CreateTweetModel.cs" />
-    <Compile Include="Application\Tweets\Commands\ICreateTweetCommand.cs" />
-    <Compile Include="Application\Tweets\Commands\Post\PostCommandTests.cs" />
+    <Compile Include="Application\Posts\Commands\CreatePostCommand.cs" />
+    <Compile Include="Application\Posts\Commands\CreatePostModel.cs" />
+    <Compile Include="Application\Posts\Commands\ICreatePostCommand.cs" />
+    <Compile Include="Application\Posts\Commands\Post\PostCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommand.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
@@ -99,13 +99,13 @@
     <Compile Include="Application\Users\Quries\GetUserDetail\IGetUserDetailQuery.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\UserDetailModel.cs" />
     <Compile Include="ContainerConfig.cs" />
-    <Compile Include="Domain\Tweets\Tweet.cs" />
+    <Compile Include="Domain\Posts\Post.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Domain\Users\UserTests.cs" />
     <Compile Include="Application\Interfaces\ICommand.cs" />
-    <Compile Include="Persistance\TweetRepository.cs" />
+    <Compile Include="Persistance\PostRepository.cs" />
     <Compile Include="Persistance\UserRepository.cs" />
-    <Compile Include="Application\Tweets\Commands\Post\PostCommand.cs" />
+    <Compile Include="Application\Posts\Commands\Post\PostCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,7 +114,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application\Tweets\Queries\" />
+    <Folder Include="Application\Posts\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

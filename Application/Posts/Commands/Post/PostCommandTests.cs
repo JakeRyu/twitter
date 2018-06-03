@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Twitter.Application.Users.Commands.CreateUser;
 using Twitter.Application.Users.Quries.GetUserDetail;
 
-namespace Twitter.Application.Tweets.Commands.Post
+namespace Twitter.Application.Posts.Commands.Post
 {
     [TestFixture]
     class PostCommandTests
@@ -18,7 +12,7 @@ namespace Twitter.Application.Tweets.Commands.Post
         private string _message;
         private Mock<IGetUserDetailQuery> _getUserDetailQuery;
         private Mock<ICreateUserCommand> _createUserCommand;
-        private Mock<ICreateTweetCommand> _createTweetCommand;
+        private Mock<ICreatePostCommand> _createTweetCommand;
         private PostCommand _postCommand;
 
 
@@ -30,13 +24,13 @@ namespace Twitter.Application.Tweets.Commands.Post
             _getUserDetailQuery = new Mock<IGetUserDetailQuery>();
             _createUserCommand = new Mock<ICreateUserCommand>();
             _createUserCommand.Setup(c => c.Execute(It.IsAny<CreateUserModel>()));
-            _createTweetCommand = new Mock<ICreateTweetCommand>();
-            _createTweetCommand.Setup(c => c.Execute(It.IsAny<CreateTweetModel>()));
+            _createTweetCommand = new Mock<ICreatePostCommand>();
+            _createTweetCommand.Setup(c => c.Execute(It.IsAny<CreatePostModel>()));
             _postCommand = new PostCommand(_username, _message)
             {
                 GetUserDetailQuery = _getUserDetailQuery.Object,
                 CreateUserCommand = _createUserCommand.Object,
-                CreateTweetCommand = _createTweetCommand.Object
+                CreatePostCommand = _createTweetCommand.Object
             };
         }
         [Test]
