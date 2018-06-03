@@ -2,7 +2,8 @@
 
 namespace Twitter.Application.Posts.Commands.CreatePost
 {
-    public interface ICreatePostCommand : ICommand
+    public interface ICreatePostCommand
     {
+        void Execute(dynamic args);
     }
 }

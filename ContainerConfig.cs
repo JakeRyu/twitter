@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using Twitter.Application.Interfaces;
 using Twitter.Application.Posts.Commands.CreatePost;
+using Twitter.Application.Posts.Queries.GetPostListByUser;
 using Twitter.Application.Users.Commands.CreateUser;
 using Twitter.Application.Users.Quries.GetUserDetail;
+using Twitter.Common.Dates;
 using Twitter.Persistance;
 
 namespace Twitter
@@ -12,11 +14,13 @@ namespace Twitter
         public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<UserRepository>().As<IUserRepository>();
-            builder.RegisterType<PostRepository>().As<IPostRepository>();
+            builder.RegisterType<DateService>().As<IDateService>();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
+            builder.RegisterType<PostRepository>().As<IPostRepository>().SingleInstance();
             builder.RegisterType<CreateUserCommand>().As<ICreateUserCommand>();
             builder.RegisterType<GetUserDetailQuery>().As<IGetUserDetailQuery>();
             builder.RegisterType<CreatePostCommand>().As<ICreatePostCommand>();
+            builder.RegisterType<GetPostListByUserQuery>().As<IGetPostListByUserQuery>();
             return builder.Build();
         }
     }

@@ -86,6 +86,9 @@
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommandTests.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostModel.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\ICreatePostCommand.cs" />
+    <Compile Include="Application\Posts\Queries\GetPostListByUser\IGetPostListByUserQuery.cs" />
+    <Compile Include="Application\Posts\Queries\GetPostListByUser\GetPostListByUserQuery.cs" />
+    <Compile Include="Application\Posts\Queries\GetPostListByUser\PostListItemModel.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommand.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQueryTests.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\IGetUserDetailQuery.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\UserDetailModel.cs" />
+    <Compile Include="Common\Dates\IDateService.cs" />
     <Compile Include="ContainerConfig.cs" />
     <Compile Include="Domain\Posts\Post.cs" />
     <Compile Include="Domain\Users\User.cs" />
@@ -109,7 +113,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application\Posts\Queries\ReadByUser\" />
     <Folder Include="Application\Posts\Queries\Wall\" />
     <Folder Include="Application\Users\Commands\Follow\" />
   </ItemGroup>
