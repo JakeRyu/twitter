@@ -80,20 +80,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Commands\Command.cs" />
-    <Compile Include="Application\Commands\FollowCommand.cs" />
     <Compile Include="Application\Interfaces\IPostRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
-    <Compile Include="Application\Commands\ReadCommand.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommand.cs" />
+    <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommandTests.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostModel.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\ICreatePostCommand.cs" />
-    <Compile Include="Application\Posts\Commands\Post\PostCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommand.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\ICreateUserCommand.cs" />
-    <Compile Include="Application\Commands\WallCommand.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQuery.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQueryTests.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\IGetUserDetailQuery.cs" />
@@ -105,7 +101,6 @@
     <Compile Include="Application\Interfaces\ICommand.cs" />
     <Compile Include="Persistance\PostRepository.cs" />
     <Compile Include="Persistance\UserRepository.cs" />
-    <Compile Include="Application\Posts\Commands\Post\PostCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

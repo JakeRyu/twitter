@@ -1,23 +1,38 @@
 ﻿using Twitter.Application.Interfaces;
+using Twitter.Domain.Posts;
+using Twitter.Domain.Users;
 
 namespace Twitter.Application.Posts.Commands.CreatePost
 {
     public class CreatePostCommand : ICreatePostCommand
     {
         private readonly IPostRepository _postRepository;
-        public CreatePostCommand(IPostRepository postRepository)
+        private readonly IUserRepository _userRepository;
+
+        public CreatePostCommand(
+            IPostRepository postRepository,
+            IUserRepository userRepository)
         {
             _postRepository = postRepository;
+            _userRepository = userRepository;
         }
-        public void Execute(CreatePostModel model)
+
+        public void Execute(dynamic model)
         {
-            var tweet = new Domain.Posts.Post
+            User user = _userRepository.Get(model.Username);
+            if (user == null)
             {
-                User = model.User,
+                user = new User {Name = model.Username};
+                _userRepository.Add(user);
+            }
+
+            var post = new Post
+            {
+                User = user,
                 Message = model.Message
             };
 
-            _postRepository.Add(tweet);
+            _postRepository.Add(post);
         }
     }
 }
