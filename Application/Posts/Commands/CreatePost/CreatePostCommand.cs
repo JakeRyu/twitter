@@ -1,7 +1,6 @@
 ﻿using Twitter.Application.Interfaces;
-using Twitter.Domain.Posts;
 
-namespace Twitter.Application.Posts.Commands
+namespace Twitter.Application.Posts.Commands.CreatePost
 {
     public class CreatePostCommand : ICreatePostCommand
     {

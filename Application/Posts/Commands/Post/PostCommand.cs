@@ -1,4 +1,5 @@
 ﻿using Twitter.Application.Commands;
+using Twitter.Application.Posts.Commands.CreatePost;
 using Twitter.Application.Users.Commands.CreateUser;
 using Twitter.Application.Users.Quries.GetUserDetail;
 using Twitter.Domain.Users;

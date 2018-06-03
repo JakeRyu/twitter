@@ -1,5 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
+using Twitter.Application.Posts.Commands.CreatePost;
 using Twitter.Application.Users.Commands.CreateUser;
 using Twitter.Application.Users.Quries.GetUserDetail;
 

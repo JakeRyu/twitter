@@ -85,9 +85,9 @@
     <Compile Include="Application\Interfaces\IPostRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
     <Compile Include="Application\Commands\ReadCommand.cs" />
-    <Compile Include="Application\Posts\Commands\CreatePostCommand.cs" />
-    <Compile Include="Application\Posts\Commands\CreatePostModel.cs" />
-    <Compile Include="Application\Posts\Commands\ICreatePostCommand.cs" />
+    <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommand.cs" />
+    <Compile Include="Application\Posts\Commands\CreatePost\CreatePostModel.cs" />
+    <Compile Include="Application\Posts\Commands\CreatePost\ICreatePostCommand.cs" />
     <Compile Include="Application\Posts\Commands\Post\PostCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommand.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
@@ -114,7 +114,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application\Posts\Queries\" />
+    <Folder Include="Application\Posts\Queries\ReadByUser\" />
+    <Folder Include="Application\Posts\Queries\Wall\" />
+    <Folder Include="Application\Users\Commands\Follow\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

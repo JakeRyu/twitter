@@ -1,4 +1,4 @@
-﻿namespace Twitter.Application.Posts.Commands
+﻿namespace Twitter.Application.Posts.Commands.CreatePost
 {
     public interface ICreatePostCommand
     {
