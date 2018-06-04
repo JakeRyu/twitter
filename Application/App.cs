@@ -60,7 +60,7 @@ namespace Twitter.Application
         {
             const int MIN_LENGTH_FOR_ACTION = 1;
             string[] splitted = input.Split(' ');
-            if (splitted.Length < MIN_LENGTH_FOR_ACTION) throw new ArgumentException();
+            if (splitted.Length < MIN_LENGTH_FOR_ACTION) throw new ArgumentException("Invalid command entered");
 
             var username = splitted[0];
             var action = splitted.Length == MIN_LENGTH_FOR_ACTION ? "read" : splitted[1];
@@ -76,14 +76,14 @@ namespace Twitter.Application
                     _followUserCommand.Execute(username, usernameToFollow);
                     break;
                 case "wall":
-                    var wallPosts = _wallQuery.Execute(username);
-                    foreach (var post in wallPosts)
-                        _writer.Write($"{post.Username} - {post.Message} ({post.WhenPosted})");
+                    _wallQuery.Execute(username)
+                        .ToList()
+                        .ForEach(post => _writer.Write($"{post.Username} - {post.Message} ({post.WhenPosted})"));
                     break;
                 case "read":
-                    var userPosts = _getPostListByUserQuery.Execute(username);
-                    foreach (var post in userPosts)
-                        _writer.Write($"{post.Message} ({post.WhenPosted})");
+                    _getPostListByUserQuery.Execute(username)
+                        .ToList()
+                        .ForEach(post => _writer.Write($"{post.Message} ({post.WhenPosted})"));
                     break;
                 default:
                     throw new Exception("Invalid command entered");
