@@ -10,17 +10,23 @@ namespace Twitter.Application
 {
     public class App : IApp
     {
+        private readonly IInputReader _reader;
+        private readonly IOutputWriter _writer;
         private readonly ICreatePostCommand _createPostCommand;
         private readonly IFollowUserCommand _followUserCommand;
         private readonly IWallQuery _wallQuery;
         private readonly IGetPostListByUserQuery _getPostListByUserQuery;
 
         public App(
+            IInputReader reader,
+            IOutputWriter writer,
             ICreatePostCommand createPostCommand,
             IFollowUserCommand followUserCommand,
             IWallQuery wallQuery,
             IGetPostListByUserQuery getPostListByUserQuery)
         {
+            _reader = reader;
+            _writer = writer;
             _createPostCommand = createPostCommand;
             _followUserCommand = followUserCommand;
             _wallQuery = wallQuery;
@@ -29,13 +35,13 @@ namespace Twitter.Application
 
         public void Run()
         {
-            Console.WriteLine("Enter a command. (Hit ENTER to exit)");
+            _writer.Write("Enter a command. (Hit ENTER to exit)");
 
             try
             {
                 while (true)
                 {
-                    var input = Console.ReadLine();
+                    var input = _reader.Read();
                     if (string.IsNullOrEmpty(input)) break;
 
                     ExecuteCommand(input);
@@ -43,11 +49,11 @@ namespace Twitter.Application
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _writer.Write(e.Message);
             }
 
-            // for debuggin mode
-            Console.ReadLine();
+            // for debugging mode
+            _reader.Read();
         }
 
         private void ExecuteCommand(string input)
@@ -73,12 +79,12 @@ namespace Twitter.Application
                 case "wall":
                     var wallPosts = _wallQuery.Execute(username);
                     foreach (var post in wallPosts)
-                        Console.WriteLine($"{post.Username} - {post.Message} ({post.WhenPosted})");
+                        _writer.Write($"{post.Username} - {post.Message} ({post.WhenPosted})");
                     break;
                 case "read":
                     var userPosts = _getPostListByUserQuery.Execute(username);
                     foreach (var post in userPosts)
-                        Console.WriteLine($"{post.Message} ({post.WhenPosted})");
+                        _writer.Write($"{post.Message} ({post.WhenPosted})");
                     break;
                 default:
                     throw new Exception("Invalid command entered");

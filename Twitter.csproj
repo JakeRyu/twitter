@@ -81,9 +81,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\App.cs" />
+    <Compile Include="Application\ConsoleInputReader.cs" />
+    <Compile Include="Application\ConsoleOutputWriter.cs" />
     <Compile Include="Application\Interfaces\IApp.cs" />
+    <Compile Include="Application\Interfaces\IInputReader.cs" />
     <Compile Include="Application\Interfaces\IPostRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
+    <Compile Include="Application\Interfaces\IOutputWriter.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommand.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommandTests.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostModel.cs" />

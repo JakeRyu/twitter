@@ -18,6 +18,8 @@ namespace Twitter
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<App>().As<IApp>();
+            builder.RegisterType<ConsoleInputReader>().As<IInputReader>();
+            builder.RegisterType<ConsoleOutputWriter>().As<IOutputWriter>();
             builder.RegisterType<DateService>().As<IDateService>();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
             builder.RegisterType<PostRepository>().As<IPostRepository>().SingleInstance();

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Linq;
-using Autofac;
-using Twitter.Application;
+﻿using Autofac;
 using Twitter.Application.Interfaces;
-using Twitter.Application.Posts.Commands.CreatePost;
-using Twitter.Application.Posts.Queries.GetPostListByUser;
-using Twitter.Application.Posts.Queries.Wall;
-using Twitter.Application.Users.Commands.Follow;
 
 namespace Twitter
 {
