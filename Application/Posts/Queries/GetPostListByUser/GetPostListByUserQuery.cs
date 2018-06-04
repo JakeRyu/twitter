@@ -22,7 +22,8 @@ namespace Twitter.Application.Posts.Queries.GetPostListByUser
 
         public IEnumerable<PostListItemModel> Execute(string username)
         {
-            return _postRepository.ListByUser(username)
+            var posts = _postRepository.ListByUser(username);
+            return posts?
                 .OrderByDescending(p => p.At)
                 .Select(p => new PostListItemModel
                 {

@@ -9,5 +9,6 @@ namespace Twitter.Application.Interfaces
         void Add(Post post);
 
         IEnumerable<Post> ListByUser(string username);
+        IEnumerable<Post> ListByUsers(string[] usernames);
     }
 }

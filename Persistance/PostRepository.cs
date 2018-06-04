@@ -26,5 +26,10 @@ namespace Twitter.Persistance
         {
             return _posts.Where(p => p.User.Name == username);
         }
+
+        public IEnumerable<Post> ListByUsers(string[] usernames)
+        {
+            return _posts.Where(p => usernames.Contains(p.User.Name));
+        }
     }
 }

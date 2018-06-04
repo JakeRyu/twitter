@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Autofac;
-using Twitter.Application.Interfaces;
 using Twitter.Application.Posts.Commands.CreatePost;
 using Twitter.Application.Posts.Queries.GetPostListByUser;
+using Twitter.Application.Posts.Queries.Wall;
 using Twitter.Application.Users.Commands.Follow;
 
 namespace Twitter
@@ -47,11 +47,14 @@ namespace Twitter
                     _container.Resolve<IFollowUserCommand>().Execute(username, usernameToFollow);
                     break;
                 case "wall":
+                    var wallPosts = _container.Resolve<IWallQuery>().Execute(username);
+                    foreach (var post in wallPosts)
+                        Console.WriteLine($"{post.Username} - {post.Message} ({post.WhenPosted})");
                     break;
                 case "read":
-                    var list = _container.Resolve<IGetPostListByUserQuery>().Execute(username);
-                    foreach (var item in list)
-                        Console.WriteLine($"{item.Message} ({item.WhenPosted})");
+                    var userPosts = _container.Resolve<IGetPostListByUserQuery>().Execute(username);
+                    foreach (var post in userPosts)
+                        Console.WriteLine($"{post.Message} ({post.WhenPosted})");
                     break;
                 default:
                     throw new Exception("Invalid action entered");

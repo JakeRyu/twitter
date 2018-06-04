@@ -88,7 +88,10 @@
     <Compile Include="Application\Posts\Commands\CreatePost\ICreatePostCommand.cs" />
     <Compile Include="Application\Posts\Queries\GetPostListByUser\IGetPostListByUserQuery.cs" />
     <Compile Include="Application\Posts\Queries\GetPostListByUser\GetPostListByUserQuery.cs" />
+    <Compile Include="Application\Posts\Queries\Wall\WallItemModel - Copy.cs" />
     <Compile Include="Application\Posts\Queries\GetPostListByUser\PostListItemModel.cs" />
+    <Compile Include="Application\Posts\Queries\Wall\IWallQuery.cs" />
+    <Compile Include="Application\Posts\Queries\Wall\WallQuery.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommand.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserCommandTests.cs" />
     <Compile Include="Application\Users\Commands\CreateUser\CreateUserModel.cs" />
@@ -114,9 +117,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\Posts\Queries\Wall\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
