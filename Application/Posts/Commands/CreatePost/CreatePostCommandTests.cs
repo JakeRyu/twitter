@@ -16,7 +16,7 @@ namespace Twitter.Application.Posts.Commands.CreatePost
         private Mock<IDateService> _dateService;
         private CreatePostCommand _command;
         private string _username = "a";
-        private dynamic _args;
+        private string _message = "b";
 
         [SetUp]
         public void SetUp()
@@ -28,11 +28,6 @@ namespace Twitter.Application.Posts.Commands.CreatePost
 
             _postRepository.Setup(p => p.Add(It.IsAny<Post>()));
             _userRepository.Setup(u => u.Add(It.IsAny<User>()));
-            _args = new
-            {
-                Username = _username,
-                Message = "b"
-            };
         }
 
         [Test]
@@ -40,7 +35,7 @@ namespace Twitter.Application.Posts.Commands.CreatePost
         {
             _userRepository.Setup(u => u.Get(_username)).Returns(() => null);
             
-            _command.Execute(_args);
+            _command.Execute(_username, _message);
 
             _userRepository.Verify(u => u.Add(It.IsAny<User>()));
             _postRepository.Verify(p => p.Add(It.IsAny<Post>()));
@@ -51,7 +46,7 @@ namespace Twitter.Application.Posts.Commands.CreatePost
         {
             _userRepository.Setup(u => u.Get(_username)).Returns(new User());
 
-            _command.Execute(_args);
+            _command.Execute(_username, _message);
 
             _userRepository.Verify(u => u.Add(It.IsAny<User>()), Times.Never);
             _postRepository.Verify(p => p.Add(It.IsAny<Post>()));

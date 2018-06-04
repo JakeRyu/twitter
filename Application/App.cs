@@ -69,8 +69,7 @@ namespace Twitter.Application
             {
                 case "->":
                     var message = string.Join(" ", splitted.Skip(2));
-                    dynamic args = new { Username = username, Message = message };
-                    _createPostCommand.Execute(args);
+                    _createPostCommand.Execute(username, message);
                     break;
                 case "follows":
                     var usernameToFollow = splitted[2];

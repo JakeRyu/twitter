@@ -21,19 +21,19 @@ namespace Twitter.Application.Posts.Commands.CreatePost
             _dateService = dateService;
         }
 
-        public void Execute(dynamic model)
+        public void Execute(string username, string message)
         {
-            User user = _userRepository.Get(model.Username);
+            User user = _userRepository.Get(username);
             if (user == null)
             {
-                user = new User {Name = model.Username};
+                user = new User {Name = username};
                 _userRepository.Add(user);
             }
 
             var post = new Post
             {
                 User = user,
-                Message = model.Message,
+                Message = message,
                 At = _dateService.GetDate()
             };
 
