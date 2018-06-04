@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Twitter.Application;
 using Twitter.Application.Interfaces;
 using Twitter.Application.Posts.Commands.CreatePost;
 using Twitter.Application.Posts.Queries.GetPostListByUser;
@@ -16,6 +17,7 @@ namespace Twitter
         public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
+            builder.RegisterType<App>().As<IApp>();
             builder.RegisterType<DateService>().As<IDateService>();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
             builder.RegisterType<PostRepository>().As<IPostRepository>().SingleInstance();

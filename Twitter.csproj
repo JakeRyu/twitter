@@ -80,6 +80,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\App.cs" />
+    <Compile Include="Application\Interfaces\IApp.cs" />
     <Compile Include="Application\Interfaces\IPostRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommand.cs" />
