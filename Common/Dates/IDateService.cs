@@ -24,7 +24,9 @@ namespace Twitter.Common.Dates
             switch (difference.Minutes)
             {
                 case 0:
-                    result = "just now";
+                    result = string.Format("{0} {1} ago", 
+                        difference.Seconds, 
+                        difference.Seconds == 1 ? "second" : "seconds");
                     break;
                 case 1:
                     result = "1 minute ago";
