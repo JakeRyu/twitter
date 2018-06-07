@@ -56,7 +56,39 @@ namespace Twitter.Application
             _reader.Read();
         }
 
-        private void ExecuteCommand(string input)
+        enum CommandType {Read, Follow, Wall, Post};
+
+        private CommandType ParseInput(string input)
+        {
+            if(string.IsNullOrEmpty(input)) throw new ArgumentNullException();
+
+            string[] splitted = input.Split(' ');
+            const int MIN_LENGTH_OF_SPLITTED_ARRAY = 1;
+            if (splitted.Length < MIN_LENGTH_OF_SPLITTED_ARRAY) throw new ArgumentException("Invalid command entered");
+
+            var username = splitted[0];
+            if (splitted.Length == MIN_LENGTH_OF_SPLITTED_ARRAY)
+                return CommandType.Read;
+
+            var command = splitted[1];
+            CommandType type = CommandType.Post;
+            switch (command)
+            {
+                case "->":
+                    type = CommandType.Post;
+                    break;
+                case "follows":
+                    type = CommandType.Follow;
+                    break;
+                case "wall":
+                    type = CommandType.Wall;
+                    break;
+            }
+
+            return type;
+        }
+
+        protected void ExecuteCommand(string input)
         {
             const int MIN_LENGTH_FOR_ACTION = 1;
             string[] splitted = input.Split(' ');
@@ -76,13 +108,11 @@ namespace Twitter.Application
                     _followUserCommand.Execute(username, usernameToFollow);
                     break;
                 case "wall":
-                    _wallQuery.Execute(username)
-                        .ToList()
+                    _wallQuery.Execute(username).ToList()
                         .ForEach(post => _writer.Write($"{post.Username} - {post.Message} ({post.WhenPosted})"));
                     break;
                 case "read":
-                    _getPostListByUserQuery.Execute(username)
-                        .ToList()
+                    _getPostListByUserQuery.Execute(username).ToList()
                         .ForEach(post => _writer.Write($"{post.Message} ({post.WhenPosted})"));
                     break;
                 default:

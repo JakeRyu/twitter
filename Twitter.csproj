@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\App.cs" />
+    <Compile Include="Application\AppTests.cs" />
     <Compile Include="Application\ConsoleInputReader.cs" />
     <Compile Include="Application\ConsoleOutputWriter.cs" />
     <Compile Include="Application\Interfaces\IApp.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostCommandTests.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\CreatePostModel.cs" />
     <Compile Include="Application\Posts\Commands\CreatePost\ICreatePostCommand.cs" />
+    <Compile Include="Application\Posts\Queries\GetPostListByUser\GetPostListByUserTests.cs" />
     <Compile Include="Application\Posts\Queries\GetPostListByUser\IGetPostListByUserQuery.cs" />
     <Compile Include="Application\Posts\Queries\GetPostListByUser\GetPostListByUserQuery.cs" />
     <Compile Include="Application\Posts\Queries\Wall\WallItemModel - Copy.cs" />
