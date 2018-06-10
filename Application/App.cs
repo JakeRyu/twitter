@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Twitter.Application.Interfaces;
-using Twitter.Application.Posts.Commands.CreatePost;
-using Twitter.Application.Posts.Queries.GetPostListByUser;
-using Twitter.Application.Posts.Queries.Wall;
-using Twitter.Application.Users.Commands.Follow;
 
 namespace Twitter.Application
 {
@@ -12,112 +11,40 @@ namespace Twitter.Application
     {
         private readonly IInputReader _reader;
         private readonly IOutputWriter _writer;
-        private readonly ICreatePostCommand _createPostCommand;
-        private readonly IFollowUserCommand _followUserCommand;
-        private readonly IWallQuery _wallQuery;
-        private readonly IGetPostListByUserQuery _getPostListByUserQuery;
+        private readonly ICommandHandler _commandHandler;
 
         public App(
             IInputReader reader,
             IOutputWriter writer,
-            ICreatePostCommand createPostCommand,
-            IFollowUserCommand followUserCommand,
-            IWallQuery wallQuery,
-            IGetPostListByUserQuery getPostListByUserQuery)
+            ICommandHandler commandHandler)
         {
             _reader = reader;
             _writer = writer;
-            _createPostCommand = createPostCommand;
-            _followUserCommand = followUserCommand;
-            _wallQuery = wallQuery;
-            _getPostListByUserQuery = getPostListByUserQuery;
+            _commandHandler = commandHandler;
         }
 
         public void Run()
         {
             _writer.Write("Enter a command. (Hit ENTER to exit)");
 
-            try
+            while (true)
             {
-                while (true)
-                {
-                    var input = _reader.Read();
-                    if (string.IsNullOrEmpty(input)) break;
+                var input = _reader.Read();
+                if (string.IsNullOrEmpty(input)) break;
 
-                    ExecuteCommand(input);
+                try
+                {
+                    _commandHandler.ExecuteCommand(input);
+                }
+                catch (Exception e)
+                {
+                    _writer.Write(e.Message);
                 }
             }
-            catch (Exception e)
-            {
-                _writer.Write(e.Message);
-            }
+
 
             // for debugging mode
             _reader.Read();
-        }
-
-        enum CommandType {Read, Follow, Wall, Post};
-
-        private CommandType ParseInput(string input)
-        {
-            if(string.IsNullOrEmpty(input)) throw new ArgumentNullException();
-
-            string[] splitted = input.Split(' ');
-            const int MIN_LENGTH_OF_SPLITTED_ARRAY = 1;
-            if (splitted.Length < MIN_LENGTH_OF_SPLITTED_ARRAY) throw new ArgumentException("Invalid command entered");
-
-            var username = splitted[0];
-            if (splitted.Length == MIN_LENGTH_OF_SPLITTED_ARRAY)
-                return CommandType.Read;
-
-            var command = splitted[1];
-            CommandType type = CommandType.Post;
-            switch (command)
-            {
-                case "->":
-                    type = CommandType.Post;
-                    break;
-                case "follows":
-                    type = CommandType.Follow;
-                    break;
-                case "wall":
-                    type = CommandType.Wall;
-                    break;
-            }
-
-            return type;
-        }
-
-        protected void ExecuteCommand(string input)
-        {
-            const int MIN_LENGTH_FOR_ACTION = 1;
-            string[] splitted = input.Split(' ');
-            if (splitted.Length < MIN_LENGTH_FOR_ACTION) throw new ArgumentException("Invalid command entered");
-
-            var username = splitted[0];
-            var action = splitted.Length == MIN_LENGTH_FOR_ACTION ? "read" : splitted[1];
-
-            switch (action)
-            {
-                case "->":
-                    var message = string.Join(" ", splitted.Skip(2));
-                    _createPostCommand.Execute(username, message);
-                    break;
-                case "follows":
-                    var usernameToFollow = splitted[2];
-                    _followUserCommand.Execute(username, usernameToFollow);
-                    break;
-                case "wall":
-                    _wallQuery.Execute(username).ToList()
-                        .ForEach(post => _writer.Write($"{post.Username} - {post.Message} ({post.WhenPosted})"));
-                    break;
-                case "read":
-                    _getPostListByUserQuery.Execute(username).ToList()
-                        .ForEach(post => _writer.Write($"{post.Message} ({post.WhenPosted})"));
-                    break;
-                default:
-                    throw new Exception("Invalid command entered");
-            }
         }
     }
 }

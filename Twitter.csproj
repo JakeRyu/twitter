@@ -81,10 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\App.cs" />
-    <Compile Include="Application\AppTests.cs" />
+    <Compile Include="Application\CommandHandler.cs" />
+    <Compile Include="Application\CommandHandlerTests.cs" />
     <Compile Include="Application\ConsoleInputReader.cs" />
     <Compile Include="Application\ConsoleOutputWriter.cs" />
     <Compile Include="Application\Interfaces\IApp.cs" />
+    <Compile Include="Application\Interfaces\ICommandHandler.cs" />
     <Compile Include="Application\Interfaces\IInputReader.cs" />
     <Compile Include="Application\Interfaces\IPostRepository.cs" />
     <Compile Include="Application\Interfaces\IUserRepository.cs" />
