@@ -1,5 +1,4 @@
-﻿using System;
-using Twitter.Application.Interfaces;
+﻿using Twitter.Application.Interfaces;
 using Twitter.Domain.Users;
 
 namespace Twitter.Application.Users.Commands.CreateUser

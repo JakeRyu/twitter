@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using Twitter.Application.Interfaces;
 using Twitter.Domain.Posts;
-using Twitter.Domain.Users;
 
 namespace Twitter.Persistance
 {

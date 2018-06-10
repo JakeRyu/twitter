@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
 using Twitter.Application.Interfaces;
 using Twitter.Domain.Users;
 

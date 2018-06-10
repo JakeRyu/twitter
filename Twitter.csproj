@@ -117,7 +117,6 @@
     <Compile Include="ContainerConfig.cs" />
     <Compile Include="Domain\Posts\Post.cs" />
     <Compile Include="Domain\Users\User.cs" />
-    <Compile Include="Domain\Users\UserTests.cs" />
     <Compile Include="Persistance\PostRepository.cs" />
     <Compile Include="Persistance\UserRepository.cs" />
     <Compile Include="Program.cs" />

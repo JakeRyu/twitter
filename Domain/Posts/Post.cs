@@ -1,5 +1,4 @@
 ﻿using System;
-using Twitter.Common.Dates;
 using Twitter.Domain.Users;
 
 namespace Twitter.Domain.Posts

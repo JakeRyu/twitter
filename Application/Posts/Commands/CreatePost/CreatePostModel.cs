@@ -1,6 +1,4 @@
-﻿using Twitter.Domain.Users;
-
-namespace Twitter.Application.Posts.Commands.CreatePost
+﻿namespace Twitter.Application.Posts.Commands.CreatePost
 {
     public class CreatePostModel
     {

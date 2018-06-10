@@ -2,8 +2,6 @@
 using System.Linq;
 using Twitter.Application.Interfaces;
 using Twitter.Common.Dates;
-using Twitter.Domain.Posts;
-using Twitter.Domain.Users;
 
 namespace Twitter.Application.Posts.Queries.GetPostListByUser
 {

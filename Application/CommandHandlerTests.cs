@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 using Twitter.Application.Interfaces;
 using Twitter.Application.Posts.Commands.CreatePost;
 using Twitter.Application.Posts.Queries.GetPostListByUser;
@@ -14,7 +13,6 @@ namespace Twitter.Application
     [TestFixture]
     class CommandHandlerTests
     {
-        private Mock<IInputReader> _reader;
         private Mock<IOutputWriter> _writer;
         private Mock<ICreatePostCommand> _createPostCommand;
         private Mock<IFollowUserCommand> _followUserCommand;
@@ -25,7 +23,6 @@ namespace Twitter.Application
         [SetUp]
         public void SetUp()
         {
-            _reader = new Mock<IInputReader>();
             _writer = new Mock<IOutputWriter>();
             _createPostCommand  = new Mock<ICreatePostCommand>();
             _followUserCommand = new Mock<IFollowUserCommand>();

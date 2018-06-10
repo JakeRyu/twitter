@@ -1,9 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Twitter.Application.Interfaces;
 using Twitter.Domain.Users;
-using Twitter.Persistance;
 
 namespace Twitter.Application.Users.Commands.CreateUser
 {
