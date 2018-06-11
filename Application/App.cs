@@ -37,10 +37,6 @@ namespace Twitter.Application
                     _writer.Write(e.Message);
                 }
             }
-
-
-            // for debugging mode
-            _reader.Read();
         }
     }
 }
