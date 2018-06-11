@@ -41,7 +41,7 @@ namespace Twitter.Application.Posts.Queries.Wall
                 {
                     Username = p.User.Name,
                     Message = p.Message,
-                    WhenPosted = _dateService.GetWhenPosted(p.At)
+                    WhenPosted = _dateService.GetTimeAgo(p.At)
                 });
         }
     }

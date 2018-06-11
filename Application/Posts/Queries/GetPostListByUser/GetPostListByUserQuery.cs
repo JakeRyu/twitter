@@ -26,7 +26,7 @@ namespace Twitter.Application.Posts.Queries.GetPostListByUser
                 .Select(p => new PostListItemModel
                 {
                     Message = p.Message,
-                    WhenPosted = _dateService.GetWhenPosted(p.At)
+                    WhenPosted = _dateService.GetTimeAgo(p.At)
                 });
         }
     }

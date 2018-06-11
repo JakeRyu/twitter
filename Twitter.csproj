@@ -113,6 +113,8 @@
     <Compile Include="Application\Users\Quries\GetUserDetail\GetUserDetailQueryTests.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\IGetUserDetailQuery.cs" />
     <Compile Include="Application\Users\Quries\GetUserDetail\UserDetailModel.cs" />
+    <Compile Include="Common\Dates\DateService.cs" />
+    <Compile Include="Common\Dates\DateServiceTests.cs" />
     <Compile Include="Common\Dates\IDateService.cs" />
     <Compile Include="ContainerConfig.cs" />
     <Compile Include="Domain\Posts\Post.cs" />
