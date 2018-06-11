@@ -23,8 +23,9 @@ namespace Twitter.Common.Dates
 
         private string BuildTimeAgoString(int time, string unit)
         {
-            if(time == 0) throw new ArgumentException();
             if(string.IsNullOrEmpty(unit)) throw new ArgumentNullException();
+
+            if (time == 0 && unit == "second") return "now";
 
             if(time == 1)
                 return $"{time} {unit} ago";
